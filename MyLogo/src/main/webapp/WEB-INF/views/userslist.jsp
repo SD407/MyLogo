@@ -108,7 +108,7 @@
 					<span style="float: left; margin-top: 5px;"> 
 						<sec:authorize access="hasRole('ADMIN')">
 							<div>
-								<a href="<c:url value='/newuser' />" class="btn btn-success">Add New User</a>
+								<a href="<c:url value='/newuser' />" class="btn btn-success" style="width: 180px;">Add New User</a>
 							</div>
 						</sec:authorize>
 					</span>
@@ -194,7 +194,7 @@
 				<div class="panel-heading" style="padding-left: 5px;">
 					<span style="float: left; margin-top: 5px;"> 
 						<sec:authorize access="hasRole('USER') or hasRole('ADMIN')">
-							<a href="<c:url value='/newcommission' />" class="btn btn-success">Create Commission</a>
+							<a href="<c:url value='/newcommission' />" class="btn btn-success" style="width: 180px;">Create Commission</a>
 						</sec:authorize>
 					</span>
 				</div>

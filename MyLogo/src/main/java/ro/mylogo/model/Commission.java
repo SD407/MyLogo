@@ -44,7 +44,7 @@ public class Commission implements Serializable{
 	@JoinTable(name = "USERS_USER_COMMISSIONS", 
              joinColumns = { @JoinColumn(name = "USER_ID") }, 
              inverseJoinColumns = { @JoinColumn(name = "USER_COMMISSION_ID") })
-	private Set<Commission> userCommissions = new HashSet<Commission>();
+	private Set<User> userCommissions = new HashSet<User>();
 
 	/**
 	 * @return the id to get
@@ -105,14 +105,14 @@ public class Commission implements Serializable{
 	/**
 	 * @return the userCommissions to get
 	 */
-	public Set<Commission> getUserCommissions() {
+	public Set<User> getUserCommissions() {
 		return userCommissions;
 	}
 
 	/**
 	 * @param userCommissions the userCommissions to set
 	 */
-	public void setUserCommissions(Set<Commission> userCommissions) {
+	public void setUserCommissions(Set<User> userCommissions) {
 		this.userCommissions = userCommissions;
 	}
 
