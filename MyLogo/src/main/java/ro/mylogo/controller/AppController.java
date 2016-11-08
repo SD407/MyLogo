@@ -24,12 +24,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import ro.mylogo.model.Commission;
 import ro.mylogo.model.User;
 import ro.mylogo.model.UserRole;
+import ro.mylogo.service.CommissionService;
 import ro.mylogo.service.UserRoleService;
 import ro.mylogo.service.UserService;
-
-
 
 @Controller
 @RequestMapping("/")
@@ -41,6 +41,9 @@ public class AppController {
 	
 	@Autowired
 	UserRoleService userRoleService;
+	
+	@Autowired
+	CommissionService commissionService;
 	
 	@Autowired
 	MessageSource messageSource;
@@ -57,9 +60,10 @@ public class AppController {
 	 */
 	@RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
 	public String listUsers(ModelMap model) {
-
+		List<Commission> commissions = commissionService.findAllCommissions();
 		List<User> users = userService.findAllUsers();
 		model.addAttribute("users", users);
+		model.addAttribute("commissions", commissions);
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "userslist";
 	}
@@ -143,7 +147,7 @@ public class AppController {
 
 	
 	/**
-	 * This method will delete an user by it's SSOID value.
+	 * This method will delete an user by it's USERNAME value.
 	 */
 	@RequestMapping(value = { "/delete-user-{username}" }, method = RequestMethod.GET)
 	public String deleteUser(@PathVariable String username) {
@@ -166,7 +170,7 @@ public class AppController {
 	@RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
 	public String accessDeniedPage(ModelMap model) {
 		model.addAttribute("loggedinuser", getPrincipal());
-		return "accessDenied";
+		return "accessdenied";
 	}
 
 	/**

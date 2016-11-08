@@ -43,9 +43,6 @@ public class UserServiceImpl implements UserService{
 		User entity = userDAO.findById(user.getId());
 		if(entity!=null){
 			entity.setUsername(user.getUsername());
-//			if(!user.getPassword().equals(entity.getPassword())){
-//				entity.setPassword(passwordEncoder.encode(user.getPassword()));
-//			}
 			entity.setFirstName(user.getFirstName());
 			entity.setLastName(user.getLastName());
 			entity.setEmail(user.getEmail());
@@ -54,16 +51,16 @@ public class UserServiceImpl implements UserService{
 	}
 
 	
-	public void deleteUserByUsername(String sso) {
-		userDAO.deleteByUsername(sso);
+	public void deleteUserByUsername(String username) {
+		userDAO.deleteByUsername(username);
 	}
 
 	public List<User> findAllUsers() {
 		return userDAO.findAllUsers();
 	}
 
-	public boolean isUserUsernameUnique(Integer id, String userName) {
-		User user = findByUsername(userName);
+	public boolean isUserUsernameUnique(Integer id, String username) {
+		User user = findByUsername(username);
 		return ( user == null || ((id != null) && (user.getId() == id)));
 	}
 	

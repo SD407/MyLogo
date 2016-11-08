@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Registration Success Page</title>
+	<title>Commission Creation Success Page</title>
 	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
 	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 	<link href="<c:url value='/static/fonts' />" rel="stylesheet"></link>
@@ -20,7 +20,7 @@
 		<div class="alert alert-success lead">
 	    	${success}
 	    	<span class="floatRight">
-				You can <a href="<c:url value='/login' />">login now.</a>
+				You can check your <a href="<c:url value='/list' />">commission now.</a>
 			</span>
 		</div>
 	</div>

@@ -11,7 +11,7 @@ import ro.mylogo.service.UserRoleService;
 
 
 /**
- * A converter class used in views to map id's to actual userProfile objects.
+ * A converter class used in views to map id's to actual userRole objects.
  */
 @Component
 public class RoleToUserRoleConverter implements Converter<Object, UserRole>{
@@ -22,14 +22,14 @@ public class RoleToUserRoleConverter implements Converter<Object, UserRole>{
 	UserRoleService userRoleService;
 
 	/**
-	 * Gets UserProfile by Id
+	 * Gets UserRole by Id
 	 * @see org.springframework.core.convert.converter.Converter#convert(java.lang.Object)
 	 */
 	public UserRole convert(Object element) {
 		Integer id = Integer.parseInt((String)element);
-		UserRole profile= userRoleService.findById(id);
-		logger.info("Profile : {}",profile);
-		return profile;
+		UserRole role= userRoleService.findById(id);
+		logger.info("Role : {}",role);
+		return role;
 	}
 	
 }

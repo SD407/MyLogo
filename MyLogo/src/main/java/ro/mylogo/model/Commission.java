@@ -12,12 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
-
-//TODO dao, services and all that
 
 @Entity
 @Table(name="COMMISSIONS")
@@ -32,15 +30,18 @@ public class Commission implements Serializable{
 	private Integer id;
 	
 	@NotEmpty
+	@Column(name="ORDER_NAME", unique=true, nullable=false)
+	private String orderName;
+	
+	@NotEmpty
 	@Column(name="ORDER_DETAILS", unique=true, nullable=false)
 	private String orderDetails;
 	
-	@NotEmpty
 	@Column(name="ORDER_STATUS", unique=true, nullable=false)
-	private boolean orderStatus;
+	private String orderStatus;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "USERS_USER_COMMISSION", 
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "USERS_USER_COMMISSIONS", 
              joinColumns = { @JoinColumn(name = "USER_ID") }, 
              inverseJoinColumns = { @JoinColumn(name = "USER_COMMISSION_ID") })
 	private Set<Commission> userCommissions = new HashSet<Commission>();
@@ -60,6 +61,20 @@ public class Commission implements Serializable{
 	}
 
 	/**
+	 * @return the orderName to get
+	 */
+	public String getOrderName() {
+		return orderName;
+	}
+
+	/**
+	 * @param orderName the orderName to set
+	 */
+	public void setOrderName(String orderName) {
+		this.orderName = orderName;
+	}
+
+	/**
 	 * @return the orderDetails to get
 	 */
 	public String getOrderDetails() {
@@ -76,14 +91,14 @@ public class Commission implements Serializable{
 	/**
 	 * @return the orderStatus to get
 	 */
-	public boolean isOrderStatus() {
+	public String getOrderStatus() {
 		return orderStatus;
 	}
 
 	/**
 	 * @param orderStatus the orderStatus to set
 	 */
-	public void setOrderStatus(boolean orderStatus) {
+	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
 	}
 
@@ -110,8 +125,8 @@ public class Commission implements Serializable{
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((orderDetails == null) ? 0 : orderDetails.hashCode());
-		result = prime * result + (orderStatus ? 1231 : 1237);
-		result = prime * result + ((userCommissions == null) ? 0 : userCommissions.hashCode());
+		result = prime * result + ((orderName == null) ? 0 : orderName.hashCode());
+		result = prime * result + ((orderStatus == null) ? 0 : orderStatus.hashCode());
 		return result;
 	}
 
@@ -137,12 +152,15 @@ public class Commission implements Serializable{
 				return false;
 		} else if (!orderDetails.equals(other.orderDetails))
 			return false;
-		if (orderStatus != other.orderStatus)
-			return false;
-		if (userCommissions == null) {
-			if (other.userCommissions != null)
+		if (orderName == null) {
+			if (other.orderName != null)
 				return false;
-		} else if (!userCommissions.equals(other.userCommissions))
+		} else if (!orderName.equals(other.orderName))
+			return false;
+		if (orderStatus == null) {
+			if (other.orderStatus != null)
+				return false;
+		} else if (!orderStatus.equals(other.orderStatus))
 			return false;
 		return true;
 	}
@@ -152,8 +170,8 @@ public class Commission implements Serializable{
 	 */
 	@Override
 	public String toString() {
-		return "Commission [id=" + id + ", orderDetails=" + orderDetails + ", orderStatus=" + orderStatus
-				+ ", userCommissions=" + userCommissions + "]";
+		return "Commission [id=" + id + ", orderName=" + orderName + ", orderDetails=" + orderDetails + ", orderStatus="
+				+ orderStatus + "]";
 	}
 
 }

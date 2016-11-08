@@ -8,7 +8,7 @@ public interface UserRoleService {
 
 	UserRole findById(int id);
 
-	UserRole findByType(String type);
+	UserRole findByRole(String type);
 	
 	List<UserRole> findAll();
 	

@@ -14,10 +14,10 @@ public interface UserService {
 	
 	void updateUser(User user);
 	
-	void deleteUserByUsername(String sso);
+	void deleteUserByUsername(String username);
 
 	List<User> findAllUsers(); 
 	
-	boolean isUserUsernameUnique(Integer id, String sso);
+	boolean isUserUsernameUnique(Integer id, String username);
 
 }

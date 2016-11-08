@@ -37,6 +37,25 @@ CREATE TABLE `users_user_role` (
   CONSTRAINT `FK_USER_ROLE` FOREIGN KEY (`user_role_id`) REFERENCES `user_role` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `commissions` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `order_name` varchar(30) NOT NULL,
+  `order_details` varchar(250) NOT NULL,
+  `order_status` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `order_name` (`order_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `users_user_commissions` (
+  `user_id` bigint(20) NOT NULL,
+  `user_commission_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`user_id`,`user_commission_id`),
+  KEY `FK_USER_COMMISSION` (`user_commission_id`),
+  CONSTRAINT `FK_COM_USERS` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `FK_USER_COMMISSION` FOREIGN KEY (`user_commission_id`) REFERENCES `commissions` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 INSERT INTO USER_ROLE(role)
 VALUES ('USER');

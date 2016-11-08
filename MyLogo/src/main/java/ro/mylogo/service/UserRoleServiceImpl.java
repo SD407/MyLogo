@@ -11,7 +11,7 @@ import ro.mylogo.model.UserRole;
 
 @Service("userProfileService")
 @Transactional
-public class UserProfileServiceImpl implements UserRoleService{
+public class UserRoleServiceImpl implements UserRoleService{
 	
 	@Autowired
 	UserRoleDAO dao;
@@ -20,8 +20,8 @@ public class UserProfileServiceImpl implements UserRoleService{
 		return dao.findById(id);
 	}
 
-	public UserRole findByType(String type){
-		return dao.findByRole(type);
+	public UserRole findByRole(String role){
+		return dao.findByRole(role);
 	}
 
 	public List<UserRole> findAll() {
