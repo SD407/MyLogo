@@ -20,7 +20,7 @@
 		<div class="alert alert-success lead">
 	    	${success}
 	    	<span class="floatRight">
-				Go back to MyAccount<a href="<c:url value='/list' />">now.</a>
+				Go back to MyAccount<a href="<c:url value='/list' />"> now.</a>
 			</span>
 		</div>
 	</div>

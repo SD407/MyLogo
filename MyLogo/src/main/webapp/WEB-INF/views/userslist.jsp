@@ -222,7 +222,7 @@
 										<td style="max-width:200px;word-wrap:break-word;">${usercommission.orderDetails}</td>
 										<td>${usercommission.orderStatus}</td>
 										<td><a style="float:right;" 
-												href="<c:url value='/edit-commission-${commission.orderName}' />" 
+												href="<c:url value='/edit-commission-${usercommission.orderName}' />" 
 													class="btn btn-success custom-width">edit</a></td>
 									</tr>
 								</c:when>
