@@ -119,6 +119,14 @@
 						</c:choose>
 					</div>
 			</div>
+			
+			<div class="form-group" style="display:none;">
+			    <label for="password">Password</label>
+			    <form:input type="password" path="password" id="password" class="form-control" placeholder="Enter your password"/>
+			    	<div class="has-error">
+						<form:errors path="password" class="help-inline"/>
+					</div>
+			</div>
 	
 			<div class="form-group">
 			    <label for="firstName">Email</label>
@@ -127,7 +135,6 @@
 						<form:errors path="email" class="help-inline"/>
 					</div>
 			</div>
-			
 			
 			<div class="form-group">
 			    <label for="userRoles">Roles</label>
