@@ -27,6 +27,10 @@ public class Commission implements Serializable{
 	private Integer id;
 	
 	@NotEmpty
+	@Column(name="USER_ID", insertable=false, updatable=false)
+	private Integer userId;
+	
+	@NotEmpty
 	@Column(name="ORDER_NAME", unique=true, nullable=false)
 	private String orderName;
 	
@@ -34,7 +38,7 @@ public class Commission implements Serializable{
 	@Column(name="ORDER_DETAILS", unique=true, nullable=false)
 	private String orderDetails;
 	
-	@Column(name="ORDER_STATUS", unique=true, nullable=false)
+	@Column(name="ORDER_STATUS", nullable=false)
 	private String orderStatus;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -53,6 +57,20 @@ public class Commission implements Serializable{
 	 */
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the userId to get
+	 */
+	public Integer getUserId() {
+		return userId;
+	}
+
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	/**

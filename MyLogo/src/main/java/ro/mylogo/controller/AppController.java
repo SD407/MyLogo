@@ -1,5 +1,6 @@
 package ro.mylogo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -62,6 +63,18 @@ public class AppController {
 	public String listUsers(ModelMap model) {
 		List<Commission> commissions = commissionService.findAllCommissions();
 		List<User> users = userService.findAllUsers();
+		
+		List<Commission> userCommissions = new ArrayList<>();
+		
+		for (Commission commission : commissions) {
+			for (User user : users) {
+				if ((commission.getUserId() == user.getId()) && (user.getUsername().equals(getPrincipal()))) {
+					userCommissions.add(commission);
+				}
+			}
+		}
+		
+		model.addAttribute("usercommissions", userCommissions);
 		model.addAttribute("users", users);
 		model.addAttribute("commissions", commissions);
 		model.addAttribute("loggedinuser", getPrincipal());

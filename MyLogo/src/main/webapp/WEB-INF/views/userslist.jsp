@@ -210,26 +210,44 @@
 							<sec:authorize access="hasRole('ADMIN')">
 								<th width="100"></th>
 							</sec:authorize>
-
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${commissions}" var="commission">
-							<tr>
-								<td>${commission.orderName}</td>
-								<td style="max-width:200px;word-wrap:break-word;">${commission.orderDetails}</td>
-								<td>${commission.orderStatus}</td>
-								<sec:authorize access="hasRole('ADMIN') or hasRole('DBA') or hasRole('USER')">
-									<td><a style="float:right;"
-										href="<c:url value='/edit-commission-${commission.orderName}' />"
-										class="btn btn-success custom-width">edit</a></td>
-								</sec:authorize>
-								<sec:authorize access="hasRole('ADMIN')">
-									<td><a
-										href="<c:url value='/delete-commission-${commission.orderName}' />"
-										class="btn btn-danger custom-width">delete</a></td>
-								</sec:authorize>
-							</tr>
+						<sec:authorize access="hasRole('USER')" var="isUser"/>
+						<c:forEach items="${usercommissions}" var="usercommission">
+							<c:choose>
+								<c:when test="${isUser}">
+									<tr>
+										<td>${usercommission.orderName}</td>
+										<td style="max-width:200px;word-wrap:break-word;">${usercommission.orderDetails}</td>
+										<td>${usercommission.orderStatus}</td>
+										<td><a style="float:right;" 
+												href="<c:url value='/edit-commission-${commission.orderName}' />" 
+													class="btn btn-success custom-width">edit</a></td>
+									</tr>
+								</c:when>
+								<c:otherwise>
+									<sec:authorize access="hasRole('ADMIN') or hasRole('DBA')">
+										<c:forEach items="${commissions}" var="commission">
+											<tr>
+												<td>${commission.orderName}</td>
+												<td style="max-width:200px;word-wrap:break-word;">${commission.orderDetails}</td>
+												<td>${commission.orderStatus}</td>
+												<sec:authorize access="hasRole('ADMIN') or hasRole('DBA') or hasRole('USER')">
+													<td><a style="float:right;"
+														href="<c:url value='/edit-commission-${commission.orderName}' />"
+														class="btn btn-success custom-width">edit</a></td>
+												</sec:authorize>
+												<sec:authorize access="hasRole('ADMIN')">
+													<td><a
+														href="<c:url value='/delete-commission-${commission.orderName}' />"
+														class="btn btn-danger custom-width">delete</a></td>
+												</sec:authorize>
+											</tr>
+										</c:forEach>
+									</sec:authorize>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</tbody>
 				</table>
