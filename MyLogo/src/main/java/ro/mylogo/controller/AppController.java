@@ -128,21 +128,21 @@ public class AppController {
 	public String updateUser(@Valid User user, BindingResult result, ModelMap model, @PathVariable String username) {
 
 		if (result.hasErrors()) {
-			return "registration";
+			return "edit";
 		}
 		
 		if(!userService.isUserUsernameUnique(user.getId(), user.getUsername())){
 			FieldError usernameError =new FieldError("user","username",messageSource.getMessage("non.unique.username", 
 					new String[]{user.getUsername()}, Locale.getDefault()));
 		    result.addError(usernameError);
-			return "registration";
+			return "edit";
 		}
 
 		userService.updateUser(user);
 
 		model.addAttribute("success", "User " + user.getFirstName() + " "+ user.getLastName() + " updated successfully");
 		model.addAttribute("loggedinuser", getPrincipal());
-		return "registrationsuccess";
+		return "editsuccess";
 	}
 
 	
