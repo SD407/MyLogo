@@ -16,6 +16,8 @@
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="<c:url value='/static/js/bootstrap.min.js' />"></script>
+	<script src="<c:url value='/static/js/searchusers.js' />"></script>
+	<script src="<c:url value='/static/js/searchcommissions.js' />"></script>
 	
 	<!-- Google Fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
@@ -97,8 +99,13 @@
 				</c:when>
 				<c:otherwise>
 					<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#userList" aria-controls="userList"
-					style="margin-top: 5px; margin-left: 5px; margin-bottom: 5px; margin-right: 5px; width: 180px;">
-					Show User List</button>
+						style="margin-top: 5px; margin-left: 5px; margin-bottom: 5px; margin-right: 5px; width: 180px;">
+						Show User List</button>
+					<div class="container" style="margin-top:5px; width: 200px; float:right;padding-right: 5px;">
+					    <div class="search">
+							<input id="searchUserText" type="text" class="form-control" maxlength="64" onkeyup="searchUsers()" placeholder="Search Users">
+						</div>
+					</div>
 				</c:otherwise>
 			</c:choose>
 			<!-- End of Collapsable Buttons -->
@@ -113,7 +120,7 @@
 						</sec:authorize>
 					</span>
 				</div>
-				<table class="table table-hover">
+				<table id="usersTable" class="table table-hover">
 					<thead>
 						<tr>
 							<th>Firstname</th>
@@ -184,8 +191,13 @@
 				</c:when>
 				<c:otherwise>
 					<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#commission" aria-controls="commission"
-				style="margin-top: 5px; margin-left: 5px; margin-bottom: 5px; margin-right: 5px; width: 180px;">
-				Show Commission List</button>
+						style="margin-top: 5px; margin-left: 5px; margin-bottom: 5px; margin-right: 5px; width: 180px;">
+						Show Commission List</button>
+					<div class="container" style="margin-top:5px; width: 200px; float:right;padding-right: 5px;">
+					    <div class="search">
+							<input id="searchCommissionsText" type="text" class="form-control" maxlength="64" onkeyup="searchCommissions()" placeholder="Search Users">
+						</div>
+					</div>
 				</c:otherwise>
 			</c:choose>
 			<!-- End of Collapsable Buttons -->
@@ -198,7 +210,7 @@
 						</sec:authorize>
 					</span>
 				</div>
-				<table class="table table-hover">
+				<table class="table table-hover" id="commissionsTable">
 					<thead>
 						<tr>
 							<th>Commission Name</th>
@@ -255,6 +267,5 @@
 		</div>
 	</div>
 	<!-- Commission List End -->
-	
 </body>
 </html>
