@@ -39,7 +39,6 @@ public class CommissionServiceImpl implements CommissionService {
 			entity.setOrderName(commission.getOrderName());
 			entity.setOrderDetails(commission.getOrderDetails());
 			entity.setOrderStatus(commission.getOrderStatus());
-			entity.setUserCommissions(commission.getUserCommissions());
 		}
 	}
 

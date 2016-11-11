@@ -1,8 +1,6 @@
 package ro.mylogo.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -40,12 +37,10 @@ public class Commission implements Serializable{
 	@Column(name="ORDER_STATUS", unique=true, nullable=false)
 	private String orderStatus;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "USERS_USER_COMMISSIONS", 
-             joinColumns = { @JoinColumn(name = "USER_ID") }, 
-             inverseJoinColumns = { @JoinColumn(name = "USER_COMMISSION_ID") })
-	private Set<User> userCommissions = new HashSet<User>();
-
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "USER_ID", nullable = false)
+	private User user;
+	
 	/**
 	 * @return the id to get
 	 */
@@ -100,20 +95,6 @@ public class Commission implements Serializable{
 	 */
 	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
-	}
-
-	/**
-	 * @return the userCommissions to get
-	 */
-	public Set<User> getUserCommissions() {
-		return userCommissions;
-	}
-
-	/**
-	 * @param userCommissions the userCommissions to set
-	 */
-	public void setUserCommissions(Set<User> userCommissions) {
-		this.userCommissions = userCommissions;
 	}
 
 	/* (non-Javadoc)

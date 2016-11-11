@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -55,6 +56,9 @@ public class User implements Serializable{
              joinColumns = { @JoinColumn(name = "USER_ID") }, 
              inverseJoinColumns = { @JoinColumn(name = "USER_ROLE_ID") })
 	private Set<UserRole> userRoles = new HashSet<UserRole>();
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="user") 
+	private Set<Commission> commissions = new HashSet<Commission>();
 	
 	/**
 	 * @return the id to get
@@ -152,6 +156,20 @@ public class User implements Serializable{
 	 */
 	public void setUserRoles(Set<UserRole> userRoles) {
 		this.userRoles = userRoles;
+	}
+
+	/**
+	 * @return the commissions to get
+	 */
+	public Set<Commission> getCommissions() {
+		return commissions;
+	}
+
+	/**
+	 * @param commissions the commissions to set
+	 */
+	public void setCommissions(Set<Commission> commissions) {
+		this.commissions = commissions;
 	}
 
 	/* (non-Javadoc)
