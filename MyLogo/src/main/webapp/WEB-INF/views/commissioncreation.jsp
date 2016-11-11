@@ -114,9 +114,9 @@
 			<div class="form-group">
 			    <label for="orderStatus">Commission Status</label>
 					<form:select path="orderStatus" id="orderStatus" class="form-control input-sm">
-   						<option>Not Started</option>
+						<option>Not Started</option>
   						<option>In Progress</option>
-						<option>Finished</option>
+   						<option>Finished</option>
 					</form:select>
 					<div class="has-error">
 						<form:errors path="orderStatus" class="help-inline"/>

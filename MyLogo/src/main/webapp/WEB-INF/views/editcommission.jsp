@@ -122,7 +122,7 @@
 						<form:errors path="orderStatus" class="help-inline"/>
 					</div>
 			</div>
-	
+			
 			<div class="row">
 				<div class="form-actions floatRight">
 					<c:choose>
