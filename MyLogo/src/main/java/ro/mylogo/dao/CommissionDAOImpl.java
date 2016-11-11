@@ -2,6 +2,8 @@ package ro.mylogo.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import ro.mylogo.model.Commission;
 
 @Repository("commissionDAO")
+@Transactional
 public class CommissionDAOImpl extends AbstractDAOImpl<Integer, Commission> implements CommissionDAO {
 	
 	static final Logger logger = LoggerFactory.getLogger(UserDAOImpl.class);

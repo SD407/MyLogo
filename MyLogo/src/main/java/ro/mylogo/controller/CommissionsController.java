@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import ro.mylogo.model.Commission;
+import ro.mylogo.model.User;
 import ro.mylogo.service.CommissionService;
+import ro.mylogo.service.UserService;
 
 @Controller
 @RequestMapping("/")
@@ -31,6 +33,9 @@ public class CommissionsController {
 	
 	@Autowired
 	CommissionService commissionService;
+	
+	@Autowired
+	UserService userService;
 	
 	@Autowired
 	MessageSource messageSource;
@@ -65,6 +70,9 @@ public class CommissionsController {
 		    result.addError(orderNameError);
 			return "commissioncreation";
 		}
+		
+		User user = userService.findByUsername(getPrincipal());
+		commission.setUser(user);
 		
 		commissionService.saveCommission(commission);
 

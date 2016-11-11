@@ -2,6 +2,8 @@ package ro.mylogo.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.criterion.Order;
@@ -14,6 +16,7 @@ import ro.mylogo.model.User;
 
 
 @Repository("userDAO")
+@Transactional
 public class UserDAOImpl extends AbstractDAOImpl<Integer, User> implements UserDAO {
 
 	static final Logger logger = LoggerFactory.getLogger(UserDAOImpl.class);
