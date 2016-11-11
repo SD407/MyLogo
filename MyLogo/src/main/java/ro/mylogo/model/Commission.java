@@ -26,7 +26,6 @@ public class Commission implements Serializable{
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotEmpty
 	@Column(name="USER_ID", insertable=false, updatable=false)
 	private Integer userId;
 	
