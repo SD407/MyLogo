@@ -3,7 +3,6 @@ package ro.mylogo.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
@@ -19,11 +18,7 @@ public class CommissionDAOImpl extends AbstractDAOImpl<Integer, Commission> impl
 
 	@Override
 	public Commission findById(int id) {
-		Commission commission = getByKey(id);
-		if(commission!=null){
-			Hibernate.initialize(commission.getUserCommissions());
-		}
-		return commission;
+		return getByKey(id);
 	}
 	
 	@Override
@@ -32,9 +27,6 @@ public class CommissionDAOImpl extends AbstractDAOImpl<Integer, Commission> impl
 		Criteria crit = createEntityCriteria();
 		crit.add(Restrictions.eq("orderName", orderName));
 		Commission commission = (Commission)crit.uniqueResult();
-		if(commission!=null){
-			Hibernate.initialize(commission.getOrderName());
-		}
 		return commission;
 	}
 

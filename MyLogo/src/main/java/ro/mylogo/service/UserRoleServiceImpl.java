@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ro.mylogo.dao.UserRoleDAO;
 import ro.mylogo.model.UserRole;
 
-@Service("userProfileService")
+@Service("userRoleService")
 @Transactional
 public class UserRoleServiceImpl implements UserRoleService{
 	

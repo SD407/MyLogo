@@ -18,7 +18,7 @@ public class UserRoleDAOImpl extends AbstractDAOImpl<Integer, UserRole>implement
 
 	public UserRole findByRole(String role) {
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("type", role));
+		crit.add(Restrictions.eq("role", role));
 		return (UserRole) crit.uniqueResult();
 	}
 	
