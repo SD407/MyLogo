@@ -103,7 +103,8 @@
 						Show User List</button>
 					<div class="container" style="margin-top:5px; width: 200px; float:right;padding-right: 5px;">
 					    <div class="search">
-							<input id="searchUserText" type="text" class="form-control" maxlength="64" onkeyup="searchUsers()" placeholder="Search Users">
+							<input id="searchUserText" type="text" class="form-control" maxlength="64" 
+								onkeyup="searchUsers()" placeholder="Search Users">
 						</div>
 					</div>
 				</c:otherwise>
@@ -195,7 +196,8 @@
 						Show Commission List</button>
 					<div class="container" style="margin-top:5px; width: 200px; float:right;padding-right: 5px;">
 					    <div class="search">
-							<input id="searchCommissionsText" type="text" class="form-control" maxlength="64" onkeyup="searchCommissions()" placeholder="Search Users">
+							<input id="searchCommissionsText" type="text" class="form-control" maxlength="64" 
+								onkeyup="searchCommissions()" placeholder="Search Commissions">
 						</div>
 					</div>
 				</c:otherwise>
