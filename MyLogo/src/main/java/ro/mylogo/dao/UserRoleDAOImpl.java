@@ -28,7 +28,7 @@ public class UserRoleDAOImpl extends AbstractDAOImpl<Integer, UserRole>implement
 	@SuppressWarnings("unchecked")
 	public List<UserRole> findAll(){
 		Criteria crit = createEntityCriteria();
-		crit.addOrder(Order.asc("role"));
+		crit.addOrder(Order.desc("role"));
 		return (List<UserRole>)crit.list();
 	}
 	

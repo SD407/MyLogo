@@ -84,7 +84,7 @@
 	<!-- Menu end -->
 	
 	<!-- Content -->
-	<div class="container">
+	<div class="container" style="position:relative;">
 		<div class="panel panel-default" style="margin-top: 55px; margin-bottom: 5px; height:700px;">
 			<div class="panel-heading">
 				<b> </b>

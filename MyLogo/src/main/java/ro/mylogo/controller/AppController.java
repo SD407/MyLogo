@@ -1,8 +1,10 @@
 package ro.mylogo.controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +21,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -112,6 +113,9 @@ public class AppController {
 			return "registration";
 		}
 		
+		Set<UserRole> role = new HashSet<>();
+		role.add(userRoleService.findById(4));
+		user.setUserRoles(role);
 		userService.saveUser(user);
 
 		model.addAttribute("success",  user.getFirstName() + " "+ user.getLastName() + ", you've registered successfully.");
@@ -167,15 +171,14 @@ public class AppController {
 		userService.deleteUserByUsername(username);
 		return "redirect:/list";
 	}
-	
 
-	/**
-	 * This method will provide UserProfile list to views
-	 */
-	@ModelAttribute("roles")
-	public List<UserRole> initializeProfiles() {
-		return userRoleService.findAll();
-	}
+//	/**
+//	 * This method will provide UserRoles list to views
+//	 */
+//	@ModelAttribute("roles")
+//	public List<UserRole> initializeProfiles() {
+//		return userRoleService.findAll();
+//	}
 	
 	/**
 	 * This method handles Access-Denied redirect.

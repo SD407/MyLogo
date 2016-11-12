@@ -50,7 +50,6 @@ public class User implements Serializable{
 	@Column(name="EMAIL", nullable=false)
 	private String email;
 
-	@NotEmpty
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "USERS_USER_ROLE", 
              joinColumns = { @JoinColumn(name = "USER_ID") }, 

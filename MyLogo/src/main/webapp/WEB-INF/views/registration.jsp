@@ -144,13 +144,13 @@
 			</div>
 			
 			
-			<div class="form-group">
+			<!--  <div class="form-group" style="display:none;">
 			    <label for="userRoles">Roles</label>
 					<form:select path="userRoles" items="${roles}" multiple="true" itemValue="id" itemLabel="role" class="form-control input-sm" />
 					<div class="has-error">
 						<form:errors path="userRoles" class="help-inline"/>
 					</div>
-			</div>
+			</div> -->
 	
 			<div class="row">
 				<div class="form-actions floatRight">
