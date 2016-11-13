@@ -21,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -114,7 +115,7 @@ public class AppController {
 		}
 		
 		Set<UserRole> role = new HashSet<>();
-		role.add(userRoleService.findById(7));
+		role.add(userRoleService.findByRole("USER"));
 		user.setUserRoles(role);
 		userService.saveUser(user);
 
@@ -172,13 +173,13 @@ public class AppController {
 		return "redirect:/list";
 	}
 
-//	/**
-//	 * This method will provide UserRoles list to views
-//	 */
-//	@ModelAttribute("roles")
-//	public List<UserRole> initializeProfiles() {
-//		return userRoleService.findAll();
-//	}
+	/**
+	 * This method will provide UserRoles list to views
+	 */
+	@ModelAttribute("roles")
+	public List<UserRole> initializeProfiles() {
+		return userRoleService.findAll();
+	}
 	
 	/**
 	 * This method handles Access-Denied redirect.
