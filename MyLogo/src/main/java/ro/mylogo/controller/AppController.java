@@ -114,7 +114,7 @@ public class AppController {
 		}
 		
 		Set<UserRole> role = new HashSet<>();
-		role.add(userRoleService.findById(4));
+		role.add(userRoleService.findById(7));
 		user.setUserRoles(role);
 		userService.saveUser(user);
 
