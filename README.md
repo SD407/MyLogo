@@ -1,5 +1,5 @@
-Personal Freelancer WebApplication - MyLogo
--------------------------------------------
+Personal Freelancer WebApplication - MyLogo - WIP
+-------------------------------------------------
 
 I used to work as a graphical designer back in college (it was a hobby of mine).
 I didn't have a webpage, and now, as I'm looking back, I'm asking myself how I would've designed it.
